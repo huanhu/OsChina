@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!--<RadioButton
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_widget_bar_news"
+            android:gravity="center_horizontal"
+            android:text="综合"
+            android:textColor="@drawable/selector_widget_bar_text"/>-->
+    <!--radiobutton的点击-->
+    <style name="radiobuttonStyle" parent="AppTheme">
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@drawable/selector_widget_bar_text</item>
+    </style>
+
+    <!--菜单textviewStyle-->
+    <style name="menuTextviewStyle" parent="AppTheme">
+        <item name="android:background">@drawable/list_layout_item_selector</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@drawable/selector_drawer_menu_text</item>
+    </style>
+
+    <!--菜单buttomStyle-->
+    <style name="menuButtomStyle" parent="AppTheme">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@drawable/selector_drawer_menu_text</item>
+
+    </style>
+
+
+</resources>

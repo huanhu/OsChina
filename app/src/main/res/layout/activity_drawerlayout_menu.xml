@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#e2e2e2"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        <!--第一层几个textview-->
+
+        <TextView
+            android:id="@+id/tv_menu_quest"
+            style="@style/menuTextviewStyle"
+            android:drawableLeft="@drawable/selector_drawer_menu_icon_quest"
+            android:text="技术问答"/>
+        <!--分割线-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#e2e2e2"/>
+
+        <TextView
+            android:id="@+id/tv_menu_opensoft"
+            style="@style/menuTextviewStyle"
+            android:drawableLeft="@drawable/selector_drawer_menu_icon_opensoft"
+            android:text="开源软件"
+
+            />
+        <!--分割线-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#e2e2e2"/>
+
+        <TextView
+            android:id="@+id/tv_menu_blog"
+            style="@style/menuTextviewStyle"
+            android:drawableLeft="@drawable/selector_drawer_menu_icon_blog"
+            android:text="博客区"
+
+            />
+        <!--分割线-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#e2e2e2"/>
+
+        <TextView
+            android:id="@+id/tv_menu_gitapp"
+            style="@style/menuTextviewStyle"
+            android:drawableLeft="@drawable/selector_drawer_menu_icon_gitapp"
+            android:text="Git客户端"
+
+            />
+
+    </LinearLayout>
+    <!--第二层按钮-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btn_menu_setting"
+            style="@style/menuButtomStyle"
+            android:drawableLeft="@drawable/selector_drawer_menu_icon_setting"
+            android:text="设置"
+            />
+
+        <Button
+            android:id="@+id/btn_menu_exit"
+            style="@style/menuButtomStyle"
+            android:drawableLeft="@drawable/selector_drawer_menu_icon_exit"
+            android:text="退出"
+            />
+
+    </LinearLayout>
+</LinearLayout>
