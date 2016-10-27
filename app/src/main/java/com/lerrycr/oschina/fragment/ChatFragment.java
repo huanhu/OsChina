@@ -1,7 +1,5 @@
 package com.lerrycr.oschina.fragment;
 
-import android.view.View;
-
 import com.lerrycr.oschina.base.BaseFragment;
 
 /**
@@ -9,9 +7,18 @@ import com.lerrycr.oschina.base.BaseFragment;
  */
 
 public class ChatFragment extends BaseFragment {
+
     @Override
-    protected View initView() {
-        return null;
+    protected void iniView() {
+
+    }
+    @Override
+    protected void initListener() {
+
+    }
+    @Override
+    protected int getLayoutResId() {
+        return 0;
     }
 
     @Override

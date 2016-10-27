@@ -35,7 +35,7 @@
             />
 
         <ImageButton
-            android:id="@+id/rb_main_popup"
+            android:id="@+id/ib_main_popup"
             style="@style/radiobuttonStyle"
             android:background="@null"
             android:checked="false"

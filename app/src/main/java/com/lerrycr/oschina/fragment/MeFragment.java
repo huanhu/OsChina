@@ -1,7 +1,5 @@
 package com.lerrycr.oschina.fragment;
 
-import android.view.View;
-
 import com.lerrycr.oschina.base.BaseFragment;
 
 /**
@@ -9,13 +7,23 @@ import com.lerrycr.oschina.base.BaseFragment;
  */
 
 public class MeFragment extends BaseFragment {
+
     @Override
-    protected View initView() {
-        return null;
+    protected void iniView() {
+
+    }
+
+    @Override
+    protected int getLayoutResId() {
+        return 0;
     }
 
     @Override
     protected void initData() {
+
+    }
+    @Override
+    protected void initListener() {
 
     }
 }

@@ -21,14 +21,5 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             />
-        <!--主页面-->
-        <!--<include layout="@layout/activity_drawerlayout_main"/>-->
-        <!--菜单栏-->
-        <!--<include-->
-        <!--layout="@layout/activity_drawerlayout_menu"-->
-        <!--android:layout_width="250dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_gravity="start"-->
-        <!--/>-->
     </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>

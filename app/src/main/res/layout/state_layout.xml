@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lerrycr.oschina.View.StateLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/statelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+    <!--三种状态,一种数据为空,一种加载失败,一种正在加载,一种加载完成现实内容-->
+    <!--网络问题-->
+    <include
+        layout="@layout/page_icon_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        />
+    <!--内容加载失败-->
+    <include
+        layout="@layout/pagefailed_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        />
+    <!--加载的内容为空-->
+    <include
+        layout="@layout/page_icon_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        />
+    <!--进度条-->
+    <include
+        layout="@layout/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+
+</com.lerrycr.oschina.View.StateLayout>
