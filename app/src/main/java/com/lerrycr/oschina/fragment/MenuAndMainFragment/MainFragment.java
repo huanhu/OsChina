@@ -2,6 +2,7 @@ package com.lerrycr.oschina.fragment.MenuAndMainFragment;
 
 import android.view.View;
 
+import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseFragment;
 
 /**
@@ -11,7 +12,8 @@ import com.lerrycr.oschina.base.BaseFragment;
 public class MainFragment extends BaseFragment {
     @Override
     protected View initView() {
-        return null;
+        View view = View.inflate(mActivity, R.layout.activity_drawerlayout_main, null);
+        return view;
     }
 
     @Override

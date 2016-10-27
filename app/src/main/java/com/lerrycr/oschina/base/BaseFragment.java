@@ -1,6 +1,6 @@
 package com.lerrycr.oschina.base;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,16 +15,12 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment {
 
     protected View mView;
-    protected Activity mActivity;
-
-    public BaseFragment() {
-
-        mActivity = getActivity();
-    }
+    protected Context mActivity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mActivity = getActivity();
         mView = initView();
         return mView;
     }

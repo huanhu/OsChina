@@ -32,9 +32,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        initActionBar();
         mFragmentManager = getSupportFragmentManager();
         replaceMainAndMenu();
+        initActionBar();
     }
 
     /**
