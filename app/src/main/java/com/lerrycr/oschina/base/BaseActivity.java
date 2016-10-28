@@ -21,7 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity {
          */
         ButterKnife.bind(this);
         /**
-         * 初始化一些其他的view
+         * 初始化一些其他的view和一些工具类
          */
         initView();
         /**

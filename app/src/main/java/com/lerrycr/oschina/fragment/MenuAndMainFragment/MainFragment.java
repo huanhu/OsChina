@@ -37,7 +37,7 @@ public class MainFragment extends BaseFragment {
     RadioButton mRbMainMe;
     @Bind(R.id.rg_main)
     RadioGroup mRgMain;
-    @Bind(R.id.fl_main_container)
+    @Bind(R.id.fl_drawlayout_container)
     FrameLayout mFlMainContainer;
     private FragmentManager mFragmentManager;
 
@@ -54,25 +54,25 @@ public class MainFragment extends BaseFragment {
                     if (mNewsFragment == null) {
                         mNewsFragment = new NewsFragment();
                     }
-                    transaction.replace(R.id.fl_main_container,mNewsFragment, Constants.NEWS_FRAGMENT);
+                    transaction.replace(R.id.fl_drawlayout_container, mNewsFragment, Constants.NEWS_FRAGMENT);
                     break;
                 case R.id.rb_main_chat:
                     if (mChatFragment == null) {
                         mChatFragment = new ChatFragment();
                     }
-                    transaction.replace(R.id.fl_main_container,mChatFragment,Constants.CHAT_FRAGMENT);
+                    transaction.replace(R.id.fl_drawlayout_container, mChatFragment, Constants.CHAT_FRAGMENT);
                     break;
                 case R.id.rb_main_explore:
                     if (mExploreFragment == null) {
                         mExploreFragment = new ExploreFragment();
                     }
-                    transaction.replace(R.id.fl_main_container,mExploreFragment,Constants.EXPLORE_FRAGMENT);
+                    transaction.replace(R.id.fl_drawlayout_container, mExploreFragment, Constants.EXPLORE_FRAGMENT);
                     break;
                 case R.id.rb_main_me:
                     if (mMeFragment == null) {
                         mMeFragment = new MeFragment();
                     }
-                    transaction.replace(R.id.fl_main_container,mMeFragment,Constants.ME_FRAGMENT);
+                    transaction.replace(R.id.fl_drawlayout_container, mMeFragment, Constants.ME_FRAGMENT);
                     break;
             }
 
@@ -118,6 +118,13 @@ public class MainFragment extends BaseFragment {
 //        选中button1
         mRgMain.check(R.id.rb_main_news);
         mFragmentManager = ((FragmentActivity) mActivity).getSupportFragmentManager();
+        //默认替换第一页的fragment
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        if (mNewsFragment == null) {
+            mNewsFragment = new NewsFragment();
+        }
+        fragmentTransaction.replace(R.id.fl_drawlayout_container, mNewsFragment, Constants.NEWS_FRAGMENT);
+        fragmentTransaction.commit();
     }
 
     @Override

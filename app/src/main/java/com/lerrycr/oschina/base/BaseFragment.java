@@ -25,11 +25,11 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mActivity = getActivity();
         mView = inflater.inflate(getLayoutResId(), null);
-        iniView();
+        ButterKnife.bind(this, mView);
         /**
          * 绑定返回的view
          */
-        ButterKnife.bind(this, mView);
+        iniView();
         initListener();
         return mView;
     }

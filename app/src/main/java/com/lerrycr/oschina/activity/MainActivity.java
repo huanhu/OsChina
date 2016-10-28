@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -13,6 +14,7 @@ import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseActivity;
 import com.lerrycr.oschina.fragment.MenuAndMainFragment.MainFragment;
 import com.lerrycr.oschina.fragment.MenuAndMainFragment.MenuFragment;
+import com.lerrycr.oschina.utils.UiUtils;
 
 import butterknife.Bind;
 
@@ -83,7 +85,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        mToggle.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.scan:
+                UiUtils.showToast("我是扫一扫");
+                break;
+        }
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

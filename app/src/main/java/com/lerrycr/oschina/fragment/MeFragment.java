@@ -15,13 +15,14 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return android.R.layout.simple_list_item_1;
     }
 
     @Override
     protected void initData() {
 
     }
+
     @Override
     protected void initListener() {
 
