@@ -1,5 +1,6 @@
 package com.lerrycr.oschina.fragment.MenuAndMainFragment;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,11 +12,13 @@ import android.widget.RadioGroup;
 
 import com.lerrycr.oschina.Constants;
 import com.lerrycr.oschina.R;
+import com.lerrycr.oschina.activity.SaveIpActivity;
 import com.lerrycr.oschina.base.BaseFragment;
 import com.lerrycr.oschina.fragment.ChatFragment;
 import com.lerrycr.oschina.fragment.ExploreFragment;
 import com.lerrycr.oschina.fragment.MeFragment;
 import com.lerrycr.oschina.fragment.NewsFragment;
+import com.lerrycr.oschina.utils.UiUtils;
 
 import butterknife.Bind;
 
@@ -85,15 +88,28 @@ public class MainFragment extends BaseFragment {
     View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            return false;
+            //开启保存ipactivity
+            startSaveIpActivity();
+            //返回值返回true表明长按按钮消费了事件
+            return true;
         }
     };
+
+    /**
+     * 开启保存ip的activity
+     */
+    private void startSaveIpActivity() {
+        Intent intent = new Intent(mActivity, SaveIpActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * 中间的小绿button的点击监听
      */
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            UiUtils.showToast("我是轻按");
 
         }
     };

@@ -29,4 +29,8 @@ public interface Constants {
      * mefragment的tag标志
      */
     String ME_FRAGMENT = "me_fragment";
+    /**
+     * 保存访问网络的ip地址
+     */
+    String IP_ADDRESS = "ip_address";
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+
+    <EditText
+        android:id="@+id/et_ip_address"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="输入主机名:如192.168.1.100"
+        />
+
+    <EditText
+        android:id="@+id/et_socket_address"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="输入端口号:如8080"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        >
+
+        <Button
+            android:id="@+id/btn_save_ip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="保存"
+            />
+
+        <Button
+            android:id="@+id/btn_clear_ip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清空"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -8,6 +8,7 @@
         android:id="@+id/news_tabs"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
+
     <!--viewpager展示数据-->
     <android.support.v4.view.ViewPager
         android:id="@+id/news_viewpager"

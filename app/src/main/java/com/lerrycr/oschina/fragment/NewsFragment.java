@@ -53,6 +53,8 @@ public class NewsFragment extends BaseFragment {
 
         NewsFragmentAdpter adpter = new NewsFragmentAdpter(mFragmentManager, mFragments);
         mNewsViewpager.setAdapter(adpter);
+        //让fragment一次性加载的数据页面
+        mNewsViewpager.setOffscreenPageLimit(mFragments.size() - 1);
         mNewsTabs.setViewPager(mNewsViewpager);
 
     }
