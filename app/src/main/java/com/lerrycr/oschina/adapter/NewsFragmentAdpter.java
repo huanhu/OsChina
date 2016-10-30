@@ -16,6 +16,7 @@ public class NewsFragmentAdpter extends FragmentPagerAdapter {
 
 
     private ArrayList<BaseFragment> mFragments;
+    private String[] titles = {"资讯", "热点", "博客", "推荐"};
 
     public NewsFragmentAdpter(FragmentManager fm, ArrayList<BaseFragment> fragments) {
         super(fm);
@@ -40,6 +41,6 @@ public class NewsFragmentAdpter extends FragmentPagerAdapter {
      */
     @Override
     public CharSequence getPageTitle(int position) {
-        return "你好";
+        return titles[position];
     }
 }

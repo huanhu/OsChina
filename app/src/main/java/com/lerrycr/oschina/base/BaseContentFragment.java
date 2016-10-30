@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.View.StateLayout;
+import com.lerrycr.oschina.listener.OnResponseListener;
 
 import java.util.Collection;
 
@@ -17,7 +18,7 @@ import butterknife.ButterKnife;
  * Created by Lerry on 2016/10/28.
  */
 
-public abstract class BaseContentFragment extends BaseFragment {
+public abstract class BaseContentFragment extends BaseFragment implements OnResponseListener {
 
     private StateLayout mStateLayout;
 

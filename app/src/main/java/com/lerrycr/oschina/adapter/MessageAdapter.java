@@ -1,11 +1,10 @@
 package com.lerrycr.oschina.adapter;
 
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lerrycr.oschina.R;
+import com.lerrycr.oschina.base.BasicListAdapter;
 import com.lerrycr.oschina.bean.News;
 
 import java.util.ArrayList;
@@ -17,53 +16,33 @@ import butterknife.ButterKnife;
  * Created by Lerry on 2016/10/28.
  */
 
-public class MessageAdapter extends BaseAdapter {
+public class MessageAdapter extends BasicListAdapter<News> {
 
-
-    private ArrayList<News> mList;
-
-    public ArrayList<News> getList() {
-        return mList;
-    }
 
     public MessageAdapter(ArrayList<News> list) {
-        this.mList = list;
+        super(list);
     }
 
     @Override
-    public int getCount() {
-        return mList.size();
+    protected Object createViewHolderAndFindViewById(View convertView, int position) {
+        ViewHolder viewHolder = new ViewHolder(convertView);
+        return viewHolder;
     }
 
     @Override
-    public Object getItem(int position) {
-        return mList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView == null) {
-            convertView = View.inflate(parent.getContext(), R.layout.item_news_message, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-        News news = mList.get(position);
+    protected void showDatas(Object viewHolder, News datas, int position) {
+        ViewHolder holder = (ViewHolder) viewHolder;
         //设置标题
-        viewHolder.mTvItemMessageTitle.setText(news.getTitle());
-        viewHolder.mTvItemMessageContent.setText(news.getBody());
-        viewHolder.mTvItemMessageUserName.setText(news.getAuthor());
-        viewHolder.mTvItemMessageDate.setText(news.getPubDate());
-        viewHolder.mTvItemMessageComment.setText(news.getCommentCount() + "");
+        holder.mTvItemMessageTitle.setText(datas.getTitle());
+        holder.mTvItemMessageContent.setText(datas.getBody());
+        holder.mTvItemMessageUserName.setText(datas.getAuthor());
+        holder.mTvItemMessageDate.setText(datas.getPubDate());
+        holder.mTvItemMessageComment.setText(datas.getCommentCount() + "");
+    }
 
-        return convertView;
+    @Override
+    protected int getItemLayoutResIds(int position) {
+        return R.layout.item_news_message;
     }
 
 
