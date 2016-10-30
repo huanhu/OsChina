@@ -1,9 +1,9 @@
 package com.lerrycr.oschina.bean;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * 新闻列表实体类
@@ -68,4 +68,5 @@ public class NewsList extends Entity implements ListEntity<News> {
 	public void setList(List<News> list) {
 		this.list = list;
 	}
+
 }

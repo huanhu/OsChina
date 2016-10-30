@@ -87,12 +87,12 @@ public class StateLayout extends FrameLayout {
     /**
      * 显示view
      *
-     * @param netView
+     * @param view
      */
-    private void showView(View netView) {
+    private void showView(View view) {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            netView.setVisibility(child == netView ? View.VISIBLE : View.INVISIBLE);
+            view.setVisibility(child == view ? View.VISIBLE : View.INVISIBLE);
         }
     }
 

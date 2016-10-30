@@ -2,10 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.lerrycr.oschina">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_share"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -17,6 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.SaveIpActivity">
+        </activity>
+        <activity android:name=".activity.dialogactivity.DialogPhotoActivity">
+        </activity>
+        <activity android:name=".activity.dialogactivity.DialogAlbumActivity">
+        </activity>
+        <activity android:name=".activity.dialogactivity.DialogTextActivity">
         </activity>
     </application>
 

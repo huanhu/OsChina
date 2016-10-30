@@ -1,7 +1,6 @@
 package com.lerrycr.oschina.fragment.MenuAndMainFragment;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -10,10 +9,11 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.lerrycr.oschina.Constants;
 import com.lerrycr.oschina.R;
+import com.lerrycr.oschina.View.ButtomDialog;
 import com.lerrycr.oschina.activity.SaveIpActivity;
 import com.lerrycr.oschina.base.BaseFragment;
+import com.lerrycr.oschina.constants.Constants;
 import com.lerrycr.oschina.fragment.ChatFragment;
 import com.lerrycr.oschina.fragment.ExploreFragment;
 import com.lerrycr.oschina.fragment.MeFragment;
@@ -109,6 +109,10 @@ public class MainFragment extends BaseFragment {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //弹出一个自定义dialog
+            ButtomDialog buttomDialog = new ButtomDialog(mActivity);
+            buttomDialog.getWindow().getDecorView().setPadding(0, 0, 0, 0);
+            buttomDialog.show();
             UiUtils.showToast("我是轻按");
 
         }
@@ -133,7 +137,7 @@ public class MainFragment extends BaseFragment {
     protected void iniView() {
 //        选中button1
         mRgMain.check(R.id.rb_main_news);
-        mFragmentManager = ((FragmentActivity) mActivity).getSupportFragmentManager();
+        mFragmentManager = getChildFragmentManager();
         //默认替换第一页的fragment
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         if (mNewsFragment == null) {

@@ -9,9 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.lerrycr.oschina.Constants;
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseActivity;
+import com.lerrycr.oschina.constants.Constants;
 import com.lerrycr.oschina.fragment.MenuAndMainFragment.MainFragment;
 import com.lerrycr.oschina.fragment.MenuAndMainFragment.MenuFragment;
 import com.lerrycr.oschina.utils.UiUtils;
@@ -101,4 +101,20 @@ public class MainActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        boolean isDoubleClick = BaseApplication.get(AppConfig.KEY_DOUBLE_CLICK_EXIT, true);
+//        if (isDoubleClick) {
+//            long curTime = SystemClock.uptimeMillis();
+//            if ((curTime - mBackPressedTime) < (3 * 1000)) {
+//                finish();
+//            } else {
+//                mBackPressedTime = curTime;
+//                Toast.makeText(this, "再次点击退出开源中国", Toast.LENGTH_LONG).show();
+//            }
+//        } else {
+//            finish();
+//        }
+//    }
 }

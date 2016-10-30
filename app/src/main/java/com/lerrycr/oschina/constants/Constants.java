@@ -1,4 +1,4 @@
-package com.lerrycr.oschina;
+package com.lerrycr.oschina.constants;
 
 /**
  * Created by Lerry on 2016/10/27.
@@ -33,4 +33,8 @@ public interface Constants {
      * 保存访问网络的ip地址
      */
     String IP_ADDRESS = "ip_address";
+    /**
+     * 保存综合fragment的信息标示
+     */
+    String MESSAGE_FRAGMENT_INFO = "message_fragment_info";
 }

@@ -2,11 +2,12 @@ package com.lerrycr.oschina.activity;
 
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.lerrycr.oschina.Constants;
+import com.lerrycr.oschina.constants.Constants;
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseActivity;
 import com.lerrycr.oschina.utils.PreferenceUtils;
@@ -49,6 +50,17 @@ public class SaveIpActivity extends BaseActivity {
     protected void initData() {
         //回显数据
         retrieveIpInfos();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //回退
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**

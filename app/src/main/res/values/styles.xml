@@ -53,8 +53,21 @@
         <item name="android:background">@null</item>
         <item name="android:padding">5dp</item>
         <item name="android:textColor">@drawable/selector_drawer_menu_text</item>
-
     </style>
 
+    <!-- 自定义一个dialog样式 继承系统的dialog样式 -->
+    <style name="CenterDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <!-- 去标题栏 -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <!-- 背景白色 -->
+        <item name="android:windowAnimationStyle">@style/AnimationAddrStyle</item>
+        <!-- 显示和消失的动画 -->
+    </style>
+
+    <style name="AnimationAddrStyle">
+        <item name="android:windowEnterAnimation">@anim/addr_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/addr_dialog_exit</item>
+    </style>
 
 </resources>

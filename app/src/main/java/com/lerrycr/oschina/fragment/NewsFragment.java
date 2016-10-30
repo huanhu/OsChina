@@ -1,6 +1,5 @@
 package com.lerrycr.oschina.fragment;
 
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 
@@ -32,7 +31,7 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     protected void iniView() {
-        mFragmentManager = ((FragmentActivity) mActivity).getSupportFragmentManager();
+        mFragmentManager = getChildFragmentManager();
         initViewPagerAndTabs();
     }
 
