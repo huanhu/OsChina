@@ -102,19 +102,4 @@ public class MainActivity extends BaseActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        boolean isDoubleClick = BaseApplication.get(AppConfig.KEY_DOUBLE_CLICK_EXIT, true);
-//        if (isDoubleClick) {
-//            long curTime = SystemClock.uptimeMillis();
-//            if ((curTime - mBackPressedTime) < (3 * 1000)) {
-//                finish();
-//            } else {
-//                mBackPressedTime = curTime;
-//                Toast.makeText(this, "再次点击退出开源中国", Toast.LENGTH_LONG).show();
-//            }
-//        } else {
-//            finish();
-//        }
-//    }
 }

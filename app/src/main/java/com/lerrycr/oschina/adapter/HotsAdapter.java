@@ -9,10 +9,10 @@ import java.util.ArrayList;
  * Created by Lerry on 2016/10/28.
  */
 
-public class MessageAdapter extends BasicListAdapter<News> {
+public class HotsAdapter extends BasicListAdapter<News> {
 
 
-    public MessageAdapter(ArrayList<News> list) {
+    public HotsAdapter(ArrayList<News> list) {
         super(list);
     }
 

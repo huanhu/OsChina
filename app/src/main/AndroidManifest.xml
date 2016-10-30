@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".activity.dialogactivity.DialogTextActivity">
         </activity>
+        <activity android:name=".activity.ItemDetialActivity">
+        </activity>
     </application>
 
 </manifest>

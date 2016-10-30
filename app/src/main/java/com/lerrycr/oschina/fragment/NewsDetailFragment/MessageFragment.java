@@ -1,64 +1,84 @@
 package com.lerrycr.oschina.fragment.NewsDetailFragment;
 
-import android.widget.ListView;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 
-import com.lerrycr.oschina.R;
-import com.lerrycr.oschina.View.VpSwipeRefreshLayout;
+import com.lerrycr.oschina.activity.ItemDetialActivity;
 import com.lerrycr.oschina.adapter.MessageAdapter;
 import com.lerrycr.oschina.base.BaseContentFragment;
 import com.lerrycr.oschina.bean.News;
 import com.lerrycr.oschina.bean.NewsList;
 import com.lerrycr.oschina.net.ApiClientHelper;
+import com.lerrycr.oschina.utils.UiUtils;
 import com.lerrycr.oschina.utils.XmlUtils;
 import com.squareup.okhttp.Request;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import butterknife.Bind;
+import java.util.List;
 
 /**
  * Created by Lerry on 2016/10/28.
  */
 
 public class MessageFragment extends BaseContentFragment {
-    /**
-     * 发送消息成功
-     */
-    @Bind(R.id.message_listview)
-    ListView mMessageListview;
-    @Bind(R.id.message_swipe_refresh)
-    VpSwipeRefreshLayout mMessageSwipeRefresh;
+
+    public static final String MESSAGE_DETIAL_URL = "message_detial_url";
     /**
      * 存储数据
      */
-    private ArrayList<News> mList;
-    /**
-     * 资讯信息的bean对象
-     */
-    private NewsList mNewsList;
+
     private MessageAdapter mMessageAdapter;
+    private List<News> mList;
 
-
-    @Override
-    protected void initListener() {
-
-    }
 
     @Override
     protected void iniView() {
         mList = new ArrayList<>();
     }
 
+
     @Override
-    protected Object getViewOrLayoutId() {
-        return R.layout.fragment_message;
+    protected void initListen() {
+        super.initListen();
+        mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                News News = (News) parent.getItemAtPosition(position);
+                String detial_url = News.getUrl();
+                System.out.println("detial_url===========" + detial_url);
+                Intent intent = new Intent(getActivity(), ItemDetialActivity.class);
+                intent.putExtra(MESSAGE_DETIAL_URL, detial_url);
+                startActivity(intent);
+            }
+        });
     }
 
-
     @Override
-    protected void initData() {
-        ApiClientHelper.getMessages(getActivity(), this);
+    protected synchronized void initData() {
+        int index = 0;
+        if (mMessageAdapter == null) {
+            index = 0;
+        } else {
+            if (mSwipeRefresh.isRefreshing()) {
+                index = 0;
+            }
+
+            if (mMessageAdapter.getCount() - 1 == mListview.getLastVisiblePosition()) {
+                //索引加1
+
+                index = mMessageAdapter.getCount() % 19;
+                System.out.println(mMessageAdapter.getCount());
+                System.out.println("index=" + index);
+            }
+        }
+
+        if (index > 3) {
+            UiUtils.showToast("我是有底线的");
+            return;
+        }
+        ApiClientHelper.getMessages(getActivity(), index, this);
     }
 
     //网络获取数据
@@ -70,22 +90,37 @@ public class MessageFragment extends BaseContentFragment {
     @Override
     public void onResponse(String response) throws IOException {
         byte[] result = response.getBytes();
-        System.out.println("result=" + result);
-        mNewsList = XmlUtils.toBean(NewsList.class, result);
+        NewsList newsList = XmlUtils.toBean(NewsList.class, result);
         //初始化adapter数据
-        initAdapterData();
+        initAdapterData(newsList);
     }
 
     /**
      * 初始化viewpager的数据
+     *
+     * @param newsList
      */
-    private void initAdapterData() {
-        if (mNewsList != null) {
-            mList = (ArrayList<News>) mNewsList.getList();
+    private void initAdapterData(NewsList newsList) {
+        mList = newsList.getList();
+        if (mMessageAdapter == null) {
             if (checkDatas(mList)) {
-                mMessageAdapter = new MessageAdapter(mList);
-                mMessageListview.setAdapter(mMessageAdapter);
+                mMessageAdapter = new MessageAdapter((ArrayList<News>) mList);
+                mListview.setAdapter(mMessageAdapter);
             }
+        } else {
+            //如果是下拉刷新
+            if (mSwipeRefresh.isRefreshing()) {
+                //下拉刷新
+                mMessageAdapter.getList().clear();
+                mSwipeRefresh.setRefreshing(false);
+                UiUtils.showToast("刷新成功");
+            }
+
+            mMessageAdapter.getList().addAll(mList);
+            mMessageAdapter.notifyDataSetChanged();
         }
+
+
     }
+
 }

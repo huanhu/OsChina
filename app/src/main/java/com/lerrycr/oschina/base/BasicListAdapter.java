@@ -3,10 +3,14 @@ package com.lerrycr.oschina.base;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.lerrycr.oschina.R;
 
 import java.util.ArrayList;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by Lerry on 2016/10/30.
@@ -42,28 +46,19 @@ public abstract class BasicListAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Object viewHolder;
+        ViewHolder viewHolder;
         if (convertView == null) {
             convertView = View.inflate(parent.getContext(), R.layout.item_news_message, null);
-            viewHolder = createViewHolderAndFindViewById(convertView, position);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         T datas = mList.get(position);
-        //设置标题
+        //设置数据
         showDatas(viewHolder, datas, position);
         return convertView;
     }
-
-    /**
-     * 创建viewholder
-     *
-     * @param convertView
-     * @param position
-     * @return
-     */
-    protected abstract Object createViewHolderAndFindViewById(View convertView, int position);
 
     /**
      * 展示数据
@@ -72,7 +67,22 @@ public abstract class BasicListAdapter<T> extends BaseAdapter {
      * @param datas
      * @param position
      */
-    protected abstract void showDatas(Object viewHolder, T datas, int position);
+    protected abstract void showDatas(ViewHolder viewHolder, T datas, int position);
 
-    protected abstract int getItemLayoutResIds(int position);
+    public static class ViewHolder {
+        @Bind(R.id.tv_item_message_title)
+        public TextView mTvItemMessageTitle;
+        @Bind(R.id.tv_item_message_content)
+        public TextView mTvItemMessageContent;
+        @Bind(R.id.tv_item_message_user_name)
+        public TextView mTvItemMessageUserName;
+        @Bind(R.id.tv_item_message_date)
+        public TextView mTvItemMessageDate;
+        @Bind(R.id.tv_item_message_comment)
+        public TextView mTvItemMessageComment;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
 }
