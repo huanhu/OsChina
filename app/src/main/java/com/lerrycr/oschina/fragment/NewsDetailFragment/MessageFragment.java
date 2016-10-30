@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MessageFragment extends BaseContentFragment {
 
-    public static final String MESSAGE_DETIAL_URL = "message_detial_url";
+    public static final String MESSAGE_DETIAL_POSITION = "message_detial_position";
     /**
      * 存储数据
      */
@@ -49,7 +49,7 @@ public class MessageFragment extends BaseContentFragment {
                 String detial_url = News.getUrl();
                 System.out.println("detial_url===========" + detial_url);
                 Intent intent = new Intent(getActivity(), ItemDetialActivity.class);
-                intent.putExtra(MESSAGE_DETIAL_URL, detial_url);
+                intent.putExtra(MESSAGE_DETIAL_POSITION, position);
                 startActivity(intent);
             }
         });

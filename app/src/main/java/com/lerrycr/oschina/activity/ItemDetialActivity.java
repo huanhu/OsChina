@@ -12,7 +12,7 @@ public class ItemDetialActivity extends BaseActivity {
     @Override
     protected void initView() {
         Intent intent = getIntent();
-        String detial_url = intent.getStringExtra(MessageFragment.MESSAGE_DETIAL_URL);
+        String detial_url = intent.getStringExtra(MessageFragment.MESSAGE_DETIAL_POSITION);
         TextView textview = (TextView) findViewById(R.id.text);
         textview.setText(detial_url);
 
