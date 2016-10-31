@@ -17,6 +17,7 @@ import com.lerrycr.oschina.activity.dialogactivity.DialogPhotoActivity;
 import com.lerrycr.oschina.activity.dialogactivity.DialogTextActivity;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -36,20 +37,25 @@ public class ButtomDialog extends Dialog {
     public ButtomDialog(Context context) {
         // 通过构造方法 传进去一个自定义的样式
         super(context, R.style.CenterDialogStyle);
-        // 更改显示位置
-        Window window = getWindow();
-        // 获取布局参数
-        WindowManager.LayoutParams params = window.getAttributes();
-        // 调整位置在最下方 并且左右居中
-        params.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-        // 更新布局参数
-        window.setAttributes(params);
+
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.buttom_dialog);
+        ButterKnife.bind(this);
+
+        // 更改显示位置
+        Window window = getWindow();
+        int width = getWindow().getWindowManager().getDefaultDisplay().getWidth();
+        // 获取布局参数
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.width = width;
+        // 调整位置在最下方 并且左右居中
+        params.gravity = Gravity.BOTTOM;
+        // 更新布局参数
+        window.setAttributes(params);
     }
 
     @OnClick({R.id.btn_dialog_text, R.id.btn_dialog_album, R.id.btn_dialog_photo, R.id.rl_dialog_exit})
@@ -68,9 +74,9 @@ public class ButtomDialog extends Dialog {
                 startDialogPhotoActivity();
                 break;
             case R.id.rl_dialog_exit:
-                dismiss();
                 break;
         }
+        dismiss();
     }
 
     private void startDialogPhotoActivity() {

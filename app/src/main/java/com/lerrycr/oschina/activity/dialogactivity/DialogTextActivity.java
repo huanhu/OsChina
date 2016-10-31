@@ -22,6 +22,6 @@ public class DialogTextActivity extends BaseActivity {
 
     @Override
     protected Object getLayoutIdOrView() {
-        return null;
+        return android.R.layout.simple_list_item_1;
     }
 }

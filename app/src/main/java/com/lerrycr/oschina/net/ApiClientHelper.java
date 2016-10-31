@@ -9,7 +9,7 @@ import com.lerrycr.oschina.listener.OnResponseListener;
  */
 
 public class ApiClientHelper {
-    private static final String HOST_URL = "http://192.168.96.24:8080/";
+    private static final String HOST_URL = "http://192.168.96.25:8080/";
     /**
      * 综合内的资讯url
      */
