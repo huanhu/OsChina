@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseActivity;
@@ -28,11 +30,22 @@ import com.squareup.okhttp.Request;
 import java.io.IOException;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class ItemDetialActivity extends BaseActivity implements OnResponseListener {
 
     @Bind(R.id.webview)
     WebView mWebview;
+    @Bind(R.id.ib_detail_keyboard)
+    ImageButton mIbDetailKeyboard;
+    @Bind(R.id.ib_detail_review)
+    ImageButton mIbDetailReview;
+    @Bind(R.id.ib_detail_write)
+    ImageButton mIbDetailWrite;
+    @Bind(R.id.ib_detail_favor)
+    ImageButton mIbDetailFavor;
+    @Bind(R.id.ib_detail_report)
+    ImageButton mIbDetailReport;
 
     private int mId;
 
@@ -240,5 +253,21 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
         // 封尾
         body.append("</div></body>");
         return body.toString();
+    }
+
+    @OnClick({R.id.ib_detail_keyboard, R.id.ib_detail_review, R.id.ib_detail_write, R.id.ib_detail_favor, R.id.ib_detail_report})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ib_detail_keyboard:
+                break;
+            case R.id.ib_detail_review:
+                break;
+            case R.id.ib_detail_write:
+                break;
+            case R.id.ib_detail_favor:
+                break;
+            case R.id.ib_detail_report:
+                break;
+        }
     }
 }

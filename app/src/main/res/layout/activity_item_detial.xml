@@ -6,59 +6,84 @@
     android:orientation="vertical"
     >
 
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="5dp"-->
-        <!--android:orientation="vertical"-->
-        <!--&gt;-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tv_message_detial_title"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:text="elasticsearch"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="18sp"-->
-            <!--android:textStyle="bold"-->
-            <!--/>-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--&gt;-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_message_detial_pubdate"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="2015-07-17"-->
-                <!--android:textColor="@color/text_gray"-->
-                <!--android:textSize="13sp"-->
-                <!--/>-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_message_detial_author"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:text="淡漠悠然"-->
-                <!--android:textColor="@color/text_user_color"-->
-                <!--android:textSize="13sp"-->
-                <!--/>-->
-        <!--</LinearLayout>-->
-    <!--</LinearLayout>-->
-
-    <WebView
-        android:id="@+id/webview"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
 
-    </WebView>
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </WebView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/ib_detail_keyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/selector_btn_opt_text_to_tools"
+            />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#dddddd"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/ib_detail_review"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/selector_review_toolbar"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_detail_write"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/selector_ic_action_write"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_detail_favor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/selector_ic_action_favor"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_detail_report"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/selector_ic_action_report"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
