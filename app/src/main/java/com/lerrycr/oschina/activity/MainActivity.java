@@ -5,9 +5,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseActivity;
@@ -31,6 +33,8 @@ public class MainActivity extends BaseActivity {
     private ActionBarDrawerToggle mToggle;
     private MainFragment mMainFragment;
     private MenuFragment mMenuFragment;
+    //退出书架的变量保存
+    private long exitTime = 0;
 
     @Override
     protected void initView() {
@@ -102,4 +106,26 @@ public class MainActivity extends BaseActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    //按两下按键退出
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(this, "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
 }

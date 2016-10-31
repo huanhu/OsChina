@@ -1,5 +1,10 @@
 package com.lerrycr.oschina.fragment.NewsDetailFragment;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.lerrycr.oschina.activity.ItemDetialActivity;
 import com.lerrycr.oschina.adapter.HotsAdapter;
 import com.lerrycr.oschina.base.BaseContentFragment;
 import com.lerrycr.oschina.bean.News;
@@ -18,6 +23,7 @@ import java.util.ArrayList;
  */
 
 public class HotFragment extends BaseContentFragment {
+    public static final String HOTS_DETIAL_ID = "HOTS_DETIAL_ID";
     private ArrayList<News> mList;
     private HotsAdapter mHotsAdapter;
 
@@ -25,6 +31,22 @@ public class HotFragment extends BaseContentFragment {
     @Override
     protected void iniView() {
         mList = new ArrayList<>();
+    }
+
+    @Override
+    protected void initListen() {
+        super.initListen();
+        mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                News news = (News) parent.getItemAtPosition(position);
+                int news_id = news.getId();
+                Intent intent = new Intent(getActivity(), ItemDetialActivity.class);
+                intent.putExtra(HOTS_DETIAL_ID, news_id);
+                intent.setAction("com.oschina.hots.detial");
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

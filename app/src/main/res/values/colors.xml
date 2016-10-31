@@ -7,4 +7,5 @@
     <color name="project_detail_item">#e2e2e2</color>
     <color name="text_gray">#a7a7a7</color>
     <color name="titlecolor">#3a3a3a</color>
+    <color name="text_user_color">#56adff</color>
 </resources>

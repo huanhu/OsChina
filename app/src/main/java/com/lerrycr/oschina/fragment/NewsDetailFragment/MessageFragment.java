@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MessageFragment extends BaseContentFragment {
 
-    public static final String MESSAGE_DETIAL_POSITION = "message_detial_position";
+    public static final String MESSAGE_DETIAL_ID = "message_detial_id";
     /**
      * 存储数据
      */
@@ -45,11 +45,11 @@ public class MessageFragment extends BaseContentFragment {
         mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                News News = (News) parent.getItemAtPosition(position);
-                String detial_url = News.getUrl();
-                System.out.println("detial_url===========" + detial_url);
+                News news = (News) parent.getItemAtPosition(position);
+                int news_id = news.getId();
                 Intent intent = new Intent(getActivity(), ItemDetialActivity.class);
-                intent.putExtra(MESSAGE_DETIAL_POSITION, position);
+                intent.putExtra(MESSAGE_DETIAL_ID, news_id);
+                intent.setAction("com.oschina.message.detial");
                 startActivity(intent);
             }
         });

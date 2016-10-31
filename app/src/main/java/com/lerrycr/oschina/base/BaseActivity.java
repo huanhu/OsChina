@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.lerrycr.oschina.MyApp;
+
 import butterknife.ButterKnife;
 
 /**
@@ -30,6 +32,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
         /**初始化监听*/
         initListener();
+
+        MyApp.getActivities().add(this);
     }
 
 
@@ -78,4 +82,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract Object getLayoutIdOrView();
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyApp.getActivities().remove(this);
+    }
 }

@@ -28,6 +28,11 @@ public class ApiClientHelper {
      */
     public static String RECOMMAND_URL = HOST_URL + "oschina/list/recommend/page";
 
+    /**
+     * 获取咨询和热点的详情页
+     */
+    public static String NEWS_DETAIL_URL = HOST_URL + "oschina/detail/news_detail/";
+
 
     public static void getMessages(Activity activity, int index, OnResponseListener listener) {
         ApiHttpClient.enqueue(activity, MESSAGE_URL + index + ".xml", listener);
@@ -43,6 +48,17 @@ public class ApiClientHelper {
 
     public static void getRecommand(Activity activity, int index, OnResponseListener listener) {
         ApiHttpClient.enqueue(activity, RECOMMAND_URL + index + ".xml", listener);
+    }
+
+    /**
+     * 获取新闻详情页面的数据
+     *
+     * @param activity
+     * @param index
+     * @param listener
+     */
+    public static void getNewsDetial(Activity activity, int index, OnResponseListener listener) {
+        ApiHttpClient.enqueue(activity, NEWS_DETAIL_URL + index + ".xml", listener);
     }
 
 

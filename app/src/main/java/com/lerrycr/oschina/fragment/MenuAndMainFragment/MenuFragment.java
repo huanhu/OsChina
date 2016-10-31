@@ -1,9 +1,11 @@
 package com.lerrycr.oschina.fragment.MenuAndMainFragment;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.lerrycr.oschina.MyApp;
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseFragment;
 
@@ -38,6 +40,7 @@ public class MenuFragment extends BaseFragment {
     protected void initListener() {
 
     }
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_drawerlayout_menu;
@@ -62,6 +65,11 @@ public class MenuFragment extends BaseFragment {
             case R.id.btn_menu_setting:
                 break;
             case R.id.btn_menu_exit:
+                //点击遍历arraylist
+                for (Activity activity : MyApp.getActivities()) {
+//                    关闭所有activity
+                    activity.finish();
+                }
                 break;
         }
     }
