@@ -8,10 +8,14 @@ import android.webkit.WebView;
 
 import com.lerrycr.oschina.R;
 import com.lerrycr.oschina.base.BaseActivity;
+import com.lerrycr.oschina.bean.Blog;
+import com.lerrycr.oschina.bean.BlogDetail;
 import com.lerrycr.oschina.bean.News;
 import com.lerrycr.oschina.bean.NewsDetail;
+import com.lerrycr.oschina.fragment.NewsDetailFragment.BlogFragment;
 import com.lerrycr.oschina.fragment.NewsDetailFragment.HotFragment;
 import com.lerrycr.oschina.fragment.NewsDetailFragment.MessageFragment;
+import com.lerrycr.oschina.fragment.NewsDetailFragment.RecommendFragment;
 import com.lerrycr.oschina.listener.OnResponseListener;
 import com.lerrycr.oschina.net.ApiClientHelper;
 import com.lerrycr.oschina.utils.Logger;
@@ -32,11 +36,17 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
 
     private int mId;
 
+    private String mAction;
+
     @Override
     protected void initView() {
-        initActionBar();
         Intent intent = getIntent();
         String action = intent.getAction();
+        setAction(action);
+        initActionBar();
+        if (action == null) {
+            return;
+        }
         int id = 0;
         switch (action) {
             case "com.oschina.message.detial":
@@ -45,6 +55,13 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
                 break;
             case "com.oschina.hots.detial":
                 id = intent.getIntExtra(HotFragment.HOTS_DETIAL_ID, -1);
+                break;
+
+            case "com.oschina.blog.detial":
+                id = intent.getIntExtra(BlogFragment.BLOGS_DETIAL_ID, -1);
+                break;
+            case "com.oschina.recommend.detial":
+                id = intent.getIntExtra(RecommendFragment.RECOMMEND_DETIAL_ID, -1);
                 break;
         }
         //保存id
@@ -58,7 +75,16 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
     private void initActionBar() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("咨询详情");
+        switch (mAction) {
+            case "com.oschina.message.detial":
+            case "com.oschina.hots.detial":
+                actionBar.setTitle("咨询详情");
+                break;
+            case "com.oschina.blog.detial":
+            case "com.oschina.recommend.detial":
+                actionBar.setTitle("博客详情");
+                break;
+        }
     }
 
     @Override
@@ -86,7 +112,19 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
     @Override
     protected void initData() {
         int index = getId();
-        ApiClientHelper.getNewsDetial(this, index, this);
+        if (mAction != null) {
+            switch (mAction) {
+                case "com.oschina.message.detial":
+                case "com.oschina.hots.detial":
+                    ApiClientHelper.getNewsAndHotsDetial(this, index, this);
+                    break;
+                case "com.oschina.blog.detial":
+                case "com.oschina.recommend.detial":
+                    ApiClientHelper.getBlogAndRecommendDetial(this, index, this);
+                    break;
+            }
+        }
+
     }
 
     @Override
@@ -104,15 +142,48 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
      *
      * @param response
      */
+
     private void setDatas(String response) {
         Logger.i(this, response);
-        NewsDetail newsDetail = XmlUtils.toBean(NewsDetail.class, response.getBytes());
-        News news = newsDetail.getNews();
-        mWebview.loadDataWithBaseURL("", getWebViewBody(news), "text/html", "utf-8", "");
+        if (mAction != null) {
+            switch (mAction) {
+                case "com.oschina.message.detial":
+                case "com.oschina.hots.detial":
+                    NewsDetail newsDetail = XmlUtils.toBean(NewsDetail.class, response.getBytes());
+                    News news = newsDetail.getNews();
+                    mWebview.loadDataWithBaseURL("", getWebViewBodyForNews(news), "text/html", "utf-8", "");
+                    break;
+                case "com.oschina.blog.detial":
+                case "com.oschina.recommend.detial":
+                    BlogDetail blogDetail = XmlUtils.toBean(BlogDetail.class, response.getBytes());
+                    Blog blog = blogDetail.getBlog();
+                    mWebview.loadDataWithBaseURL("", getWebViewBodyForBlog(blog), "text/html", "utf-8", "");
+                    break;
+            }
+        }
+
 
     }
 
-    protected String getWebViewBody(News detail) {
+
+    @Override
+    protected Object getLayoutIdOrView() {
+        return R.layout.activity_item_detial;
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        mId = id;
+    }
+
+    public void setAction(String action) {
+        mAction = action;
+    }
+
+    protected String getWebViewBodyForNews(News detail) {
         StringBuffer body = new StringBuffer();
         body.append(UIHelper.WEB_STYLE).append(UIHelper.WEB_LOAD_IMAGES);
         body.append(ThemeSwitchUtils.getWebViewBodyString());
@@ -154,16 +225,20 @@ public class ItemDetialActivity extends BaseActivity implements OnResponseListen
         return body.toString();
     }
 
-    @Override
-    protected Object getLayoutIdOrView() {
-        return R.layout.activity_item_detial;
-    }
-
-    public int getId() {
-        return mId;
-    }
-
-    public void setId(int id) {
-        mId = id;
+    protected String getWebViewBodyForBlog(Blog detail) {
+        StringBuffer body = new StringBuffer();
+        body.append(UIHelper.WEB_STYLE).append(UIHelper.WEB_LOAD_IMAGES);
+        body.append(ThemeSwitchUtils.getWebViewBodyString());
+        // 添加title
+        body.append(String.format("<div class='title'>%s</div>", detail.getTitle()));
+        // 添加作者和时间
+        String time = detail.getPubDate();
+        String author = String.format("<a class='author' href='http://my.oschina.net/u/%s'>%s</a>", detail.getAuthorId(), detail.getAuthor());
+        body.append(String.format("<div class='authortime'>%s&nbsp;&nbsp;&nbsp;&nbsp;%s</div>", author, time));
+        // 添加图片点击放大支持
+        body.append(UIHelper.setHtmlCotentSupportImagePreview(detail.getBody()));
+        // 封尾
+        body.append("</div></body>");
+        return body.toString();
     }
 }

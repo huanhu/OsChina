@@ -1,5 +1,10 @@
 package com.lerrycr.oschina.fragment.NewsDetailFragment;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.lerrycr.oschina.activity.ItemDetialActivity;
 import com.lerrycr.oschina.adapter.BlogAdapter;
 import com.lerrycr.oschina.base.BaseContentFragment;
 import com.lerrycr.oschina.bean.Blog;
@@ -18,6 +23,7 @@ import java.util.ArrayList;
 
 public class BlogFragment extends BaseContentFragment {
 
+    public static final String BLOGS_DETIAL_ID = "BLOGS_DETIAL_ID";
     private ArrayList<Blog> mBloglist;
     private BlogAdapter mBlogAdapter;
 
@@ -25,6 +31,22 @@ public class BlogFragment extends BaseContentFragment {
     @Override
     protected void iniView() {
 
+    }
+
+    @Override
+    protected void initListen() {
+        super.initListen();
+        mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Blog blog = (Blog) parent.getItemAtPosition(position);
+                int blog_id = blog.getId();
+                Intent intent = new Intent(getActivity(), ItemDetialActivity.class);
+                intent.putExtra(BLOGS_DETIAL_ID, blog_id);
+                intent.setAction("com.oschina.blog.detial");
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

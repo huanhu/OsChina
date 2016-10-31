@@ -10,7 +10,7 @@ import com.lerrycr.oschina.base.BaseFragment;
 import com.lerrycr.oschina.fragment.NewsDetailFragment.BlogFragment;
 import com.lerrycr.oschina.fragment.NewsDetailFragment.HotFragment;
 import com.lerrycr.oschina.fragment.NewsDetailFragment.MessageFragment;
-import com.lerrycr.oschina.fragment.NewsDetailFragment.RecommandFragment;
+import com.lerrycr.oschina.fragment.NewsDetailFragment.RecommendFragment;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class NewsFragment extends BaseFragment {
         MessageFragment messageFragment = new MessageFragment();
         HotFragment hotFragment = new HotFragment();
         BlogFragment blogFragment = new BlogFragment();
-        RecommandFragment recommandFragment = new RecommandFragment();
+        RecommendFragment recommandFragment = new RecommendFragment();
         mFragments.add(messageFragment);
         mFragments.add(hotFragment);
         mFragments.add(blogFragment);

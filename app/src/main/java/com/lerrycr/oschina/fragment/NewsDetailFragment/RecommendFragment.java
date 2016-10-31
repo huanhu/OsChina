@@ -1,5 +1,10 @@
 package com.lerrycr.oschina.fragment.NewsDetailFragment;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.lerrycr.oschina.activity.ItemDetialActivity;
 import com.lerrycr.oschina.adapter.RecommendAdapter;
 import com.lerrycr.oschina.base.BaseContentFragment;
 import com.lerrycr.oschina.bean.Blog;
@@ -16,14 +21,36 @@ import java.util.ArrayList;
  * Created by Lerry on 2016/10/28.
  */
 
-public class RecommandFragment extends BaseContentFragment {
+public class RecommendFragment extends BaseContentFragment {
 
+    public static final String RECOMMEND_DETIAL_ID = "RECOMMEND_DETIAL_ID";
     private ArrayList<Blog> mBloglist;
     private RecommendAdapter mRecommendAdapter;
 
     @Override
     protected void iniView() {
 
+    }
+
+    @Override
+    protected void initListen() {
+        super.initListen();
+        mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Blog blog = (Blog) parent.getItemAtPosition(position);
+                        int blog_id = blog.getId();
+                        Intent intent = new Intent(getActivity(), ItemDetialActivity.class);
+                        intent.putExtra(RECOMMEND_DETIAL_ID, blog_id);
+                        intent.setAction("com.oschina.recommend.detial");
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
     }
 
     @Override

@@ -33,6 +33,10 @@ public class ApiClientHelper {
      */
     public static String NEWS_DETAIL_URL = HOST_URL + "oschina/detail/news_detail/";
 
+    /**
+     * 获取博客和推荐页的详情
+     */
+    public static String BLOG_DETAIL_URL = HOST_URL + "oschina/detail/blog_detail/";
 
     public static void getMessages(Activity activity, int index, OnResponseListener listener) {
         ApiHttpClient.enqueue(activity, MESSAGE_URL + index + ".xml", listener);
@@ -57,9 +61,19 @@ public class ApiClientHelper {
      * @param index
      * @param listener
      */
-    public static void getNewsDetial(Activity activity, int index, OnResponseListener listener) {
+    public static void getNewsAndHotsDetial(Activity activity, int index, OnResponseListener listener) {
         ApiHttpClient.enqueue(activity, NEWS_DETAIL_URL + index + ".xml", listener);
     }
 
+    /**
+     * 获取博客和推荐详情页的数据
+     *
+     * @param activity
+     * @param index
+     * @param listener
+     */
+    public static void getBlogAndRecommendDetial(Activity activity, int index, OnResponseListener listener) {
+        ApiHttpClient.enqueue(activity, BLOG_DETAIL_URL + index + ".xml", listener);
+    }
 
 }
